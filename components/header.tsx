@@ -28,14 +28,19 @@ export function Header() {
               </Link>
             </li>
             <li>
+              <Link href="/three-d" className="text-sm hover:text-primary transition-colors">
+                3D
+              </Link>
+            </li>
+            <li>
               <Link href="#contact" className="text-sm hover:text-primary transition-colors">
                 Contact
               </Link>
             </li>
+
           </ul>
         </nav>
       </div>
     </motion.header>
   )
 }
-
