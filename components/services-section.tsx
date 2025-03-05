@@ -1,9 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useInView } from "framer-motion"
-import { useRef } from "react"
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card"
+import { motion, useInView } from "framer-motion"
 import { Zap } from "lucide-react"
+import { useRef } from "react"
 
 const services = [
   {
@@ -58,15 +58,30 @@ export function ServicesSection() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              className="service-card rounded-xl p-6 h-full"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
             >
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-muted-foreground">{service.description}</p>
+              <CardContainer className="inter-var" containerClassName="py-0">
+                <CardBody className="bg-card relative group/card dark:hover:shadow-2xl dark:hover:shadow-primary/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-[280px] rounded-xl p-6 border">
+                  <CardItem translateZ="50" className="mb-4">
+                    {service.icon}
+                  </CardItem>
+                  <CardItem translateZ="60" className="text-xl font-semibold mb-2">
+                    {service.title}
+                  </CardItem>
+                  <CardItem translateZ="80" className="text-muted-foreground text-sm">
+                    {service.description}
+                  </CardItem>
+                  <CardItem
+                    translateZ="100"
+                    as="button"
+                    className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-bold mt-6"
+                  >
+                    Learn More
+                  </CardItem>
+                </CardBody>
+              </CardContainer>
             </motion.div>
           ))}
         </div>
@@ -74,4 +89,3 @@ export function ServicesSection() {
     </section>
   )
 }
-
